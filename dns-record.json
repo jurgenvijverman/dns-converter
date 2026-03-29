@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "properties": {
+    "template": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "enum": [
+            "dns-records"
+          ]
+        },
+        "version": {
+          "type": "integer",
+          "enum": [
+            1
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": ".*.[A-Za-z]+.swift.com$",
+            "error-message": "The host name did not end with the correct zone. Must be <Environment>.swift.com"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "A",
+              "CNAME"
+            ]
+          },
+          "ip-addresses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "ipv4"
+            }
+          },
+          "ttl": {
+            "type": "integer",
+            "minimum": 300
+          },
+          "enable-reverse-lookup": {
+            "type": "boolean"
+          },
+          "resolves-to": {
+            "type": "string",
+            "format": "hostname"
+          },
+          "allow-duplicate-ip": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "type"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "template",
+    "records"
+  ],
+  "additionalProperties": false
+}

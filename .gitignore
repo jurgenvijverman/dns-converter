@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+
+# Poetry
+# Include poetry.lock for applications (reproducible installs)
+# Uncomment the next line if this is a library instead
+# poetry.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# pytest
+.pytest_cache/
+
+# Input CSV files (add your own Infoblox exports here)
+inputFiles/*
+!inputFiles/.gitkeep
+
+# Generated output (re-create with: python convert_dns.py)
+outputFiles/*
+!outputFiles/.gitkeep
